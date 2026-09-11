@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, status
 from pymongo.database import Database
 from app.database import lifespan, get_db
+from app.config import settings
 from app.schema_utils import sample_collection_schema
 from pydantic import BaseModel
 from app.llm_engine import generate_mongodb_pipeline
@@ -23,14 +24,19 @@ app= FastAPI(
     lifespan=lifespan
 )
 
-#CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=settings.ALLOWED_ORIGINS,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 #setting up methods
 
 @app.get("/api/v1/sample-collection")
