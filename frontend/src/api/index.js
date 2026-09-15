@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const API_BASE = (
-  import.meta.env.VITE_API_BASE || "https://text-to-mql-dashboard.onrender.com/"
-).replace(/\/$/, "")
+  import.meta.env.VITE_API_BASE_URL || "https://text-to-mql-dashboard-1.onrender.com"
+).replace(/\/$/, "");
 
 export const fetchCollections = async () => {
     const res = await axios.get(`${API_BASE}/sample-collection`);
