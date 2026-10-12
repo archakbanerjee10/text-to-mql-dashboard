@@ -67,7 +67,7 @@ def get_schema(collection_name:str, db:Database=Depends(get_db)):
             detail=str(e)
         )
 
-@app.post("/api/v1/querry/generate")
+@app.post("/api/v1/query/generate")
 def generate_query(payload:QueryRequest, db:Database=Depends(get_db)):
     """converts users natural languggae question into MongoDB pipeline via LLM"""
     try:
