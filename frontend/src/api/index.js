@@ -5,7 +5,7 @@ const API_BASE = (
 ).replace(/\/$/, "")
 
 export const fetchCollections = async () => {
-    const res = await axios.get(`${API_BASE}/sample-collection`);
+    const res = await fetch(`${API_BASE}/api/v1/sample-collection`);
     return res.data.collections || [];
 };
 
