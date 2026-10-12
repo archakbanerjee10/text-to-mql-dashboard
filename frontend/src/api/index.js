@@ -16,6 +16,11 @@ export const fetchCollections = async () => {
   return data.collections || [];
 };
 
+export const fetchSchema = async (collectionName) => {
+    const res = await axios.get(`${API_BASE}/collections/${collectionName}/schema`);
+    return res.data;
+};
+
 export const generatePipeline = async (collectionName, userPrompt) => {
     const res = await axios.post(`${API_BASE}/querry/generate`, {
       collection_name: collectionName,
