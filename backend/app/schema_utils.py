@@ -5,7 +5,6 @@ from pymongo.database import Database
 
 def sample_collection_schema(db:Database,collection_name:str,sample_size:int=5) -> Dict[str, Any]:
     """
-    Samples documents from a collection to infer field names and data types.
     This schema is fed into the LLM prompt.
     """
     if collection_name not in db.list_collection_names():

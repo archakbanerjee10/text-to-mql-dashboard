@@ -3,9 +3,16 @@ import os
 from google import genai
 from google.genai import types
 from typing import List, Dict, Any
+from app.config import settings  # loads .env before the Gemini client is created
 
-# 1. Initialize Client
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+api_key = os.getenv("GEMINI_API_KEY")
+if not api_key:
+    raise ValueError(
+        "GEMINI_API_KEY is missing. Put it in backend/.env and restart uvicorn "
+        "(--reload does not pick up .env changes)."
+    )
+
+client = genai.Client(api_key=api_key)
 
 PROHIBITED_STAGES = {"$out", "$merge", "$indexStats", "$collStats"}
 
