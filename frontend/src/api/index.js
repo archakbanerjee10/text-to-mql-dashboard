@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API_BASE = (
-  import.meta.env.API_BASE || "http://127.0.0.1:8000/api/v1"
+  import.meta.env.BACKEND_BASE || "https://text-to-mql.onrender.com"
 ).replace(/\/$/, "")
 
 export const fetchCollections = async () => {
@@ -18,7 +18,7 @@ export const generatePipeline = async (collectionName, userPrompt) => {
     const res = await axios.post(`${API_BASE}/querry/generate`, {
       collection_name: collectionName,
       user_prompt: userPrompt,
-    });
+    });git 
     return res.data;
 };
 
