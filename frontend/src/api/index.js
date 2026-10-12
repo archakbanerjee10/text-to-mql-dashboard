@@ -5,13 +5,15 @@ const API_BASE = (
 ).replace(/\/$/, "")
 
 export const fetchCollections = async () => {
-    const res = await fetch(`${API_BASE}/api/v1/sample-collection`);
-    return res.data.collections || [];
-};
-
-export const fetchSchema = async (collectionName) => {
-    const res = await axios.get(`${API_BASE}/collections/${collectionName}/schema`);
-    return res.data;
+  const res = await fetch(`${API_BASE}/api/v1/sample-collection`);
+  
+  // Check if the request was successful
+  if (!res.ok) {
+      throw new Error("Failed to fetch collections");
+  }
+  
+  const data = await res.json();
+  return data.collections || [];
 };
 
 export const generatePipeline = async (collectionName, userPrompt) => {
