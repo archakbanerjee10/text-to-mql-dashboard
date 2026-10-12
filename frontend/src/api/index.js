@@ -28,18 +28,18 @@ export const fetchSchema = async (collectionName) => {
 };
 
 export const generatePipeline = async (collectionName, userPrompt) => {
-    const res = await axios.post(`${API_BASE}/querry/generate`, {
-      collection_name: collectionName,
-      user_prompt: userPrompt,
-    });git 
-    return res.data;
+  const res = await axios.post(`${API_BASE}/api/v1/query/generate`, {
+    collection_name: collectionName,
+    user_prompt: userPrompt,
+  });
+  return res.data;
 };
 
 export const executePipeline = async (collectionName, pipeline) => {
-    const res = await axios.post(`${API_BASE}/pipeline/execute`, {
-      collection_name: collectionName,
-      pipeline: pipeline,
-    });
-    return res.data;
+  const res = await axios.post(`${API_BASE}/api/v1/pipeline/execute`, {
+    collection_name: collectionName,
+    pipeline: pipeline,
+  });
+  return res.data;
 };
 
