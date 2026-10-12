@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API_BASE = (
-  import.meta.env.BACKEND_BASE || "https://text-to-mql.onrender.com"
+  "https://text-to-mql.onrender.com"
 ).replace(/\/$/, "")
 
 export const fetchCollections = async () => {
