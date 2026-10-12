@@ -1,8 +1,6 @@
 import axios from 'axios'
 
-const API_BASE = (
-  "https://text-to-mql.onrender.com"
-).replace(/\/$/, "")
+const API_BASE = "https://text-to-mql.onrender.com".replace(/\/$/, "");
 
 export const fetchCollections = async () => {
     const res = await axios.get(`${API_BASE}/sample-collection`);
